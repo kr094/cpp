@@ -1,0 +1,40 @@
+# Project: Ants
+# Makefile created by Dev-C++ 5.6.0
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = driver.o Organism.o Ant.o Position.o World.o
+LINKOBJ  = driver.o Organism.o Ant.o Position.o World.o
+LIBS     = -L"F:/c-workspace/Dev-Cpp/MinGW64/lib" -L"F:/c-workspace/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"F:/c-workspace/Dev-Cpp/MinGW64/include" -I"F:/c-workspace/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/c-workspace/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"F:/c-workspace/Dev-Cpp/MinGW64/include" -I"F:/c-workspace/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/c-workspace/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"F:/c-workspace/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = Ants.exe
+CXXFLAGS = $(CXXINCS) -g3 -fverbose-asm
+CFLAGS   = $(INCS) -g3 -fverbose-asm
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+driver.o: driver.cpp
+	$(CPP) -c driver.cpp -o driver.o $(CXXFLAGS)
+
+Organism.o: Organism.cpp
+	$(CPP) -c Organism.cpp -o Organism.o $(CXXFLAGS)
+
+Ant.o: Ant.cpp
+	$(CPP) -c Ant.cpp -o Ant.o $(CXXFLAGS)
+
+Position.o: Position.cpp
+	$(CPP) -c Position.cpp -o Position.o $(CXXFLAGS)
+
+World.o: World.cpp
+	$(CPP) -c World.cpp -o World.o $(CXXFLAGS)
